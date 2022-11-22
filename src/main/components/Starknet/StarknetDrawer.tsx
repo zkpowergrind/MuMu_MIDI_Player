@@ -12,7 +12,13 @@ import { observer } from "mobx-react-lite"
 import { FC, useState } from "react"
 import { localized } from "../../../common/localize/localizedString"
 import { NoteEvent } from "../../../common/track"
-import { createNote2 } from "../../actions/track"
+import {
+  light_to_dark_mode_arr,
+  lydian_steps_arr,
+  modal_t,
+  PitchClass,
+  print_scale,
+} from "../../helpers/mumu_music"
 import { useCounterContract } from "../../hooks/useCounterContract"
 import { useStores } from "../../hooks/useStores"
 import { DrawerOptions } from "../../stores/StarknetStore"
@@ -125,6 +131,16 @@ export const StarknetDrawer: FC = observer(() => {
     return nums
   }
   const onCompute = () => {
+    var hey = print_scale(lydian_steps_arr)
+    var hey2 = print_scale(light_to_dark_mode_arr[2])
+    let tonic = new PitchClass(0, 4)
+    //var hey3 = modal_t(62, 2, tonic, light_to_dark_mode_arr[2])
+    var hey3 = modal_t(62, 2, tonic, lydian_steps_arr)
+
+    console.log(hey)
+    console.log(hey2)
+
+    /*
     console.log("handle compute", starknet?.drawerOptions)
     console.log("Selectednotes", selectedNotes.selectedNotes)
 
@@ -154,7 +170,7 @@ export const StarknetDrawer: FC = observer(() => {
         )
       }
     }
-
+*/
     //console.log(withLength)
   }
 
